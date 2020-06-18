@@ -1,7 +1,4 @@
 node_modules/
 .env
 .DS_Store
-.vscode
-instructions.md
-package-lock.json
-.gitignore.txt
+package.json
