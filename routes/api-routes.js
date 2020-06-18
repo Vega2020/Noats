@@ -10,11 +10,10 @@ module.exports = function(app) {
   app.post("/api/saveRecipe", (req, res) => {
     res.json({
       recipeName: req.body.title,
-      queryAddress: req.body.
-    })
-  })
-
-}//closing bracket for recipe entry function
+      queryAddress: req.body.queryAddress,
+    });
+  });
+}; //closing bracket for recipe entry function
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -24,7 +23,7 @@ module.exports = function(app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   });
 
@@ -34,12 +33,12 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -60,7 +59,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
       });
     }
   });
