@@ -12,13 +12,13 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  Noats.associate = function(models) {
-    Noats.belongsTo(models.Recipe, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
+// //  Noats.associate = function(models) {
+//     Noats.belongsTo(models.Recipe, {
+//       foreignKey: {
+//         allowNull: false,
+//       },
+//     });
+// //  };
 
   return Noats;
 };
