@@ -4,6 +4,18 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
+// route for entering recipes to the Recipe table
+module.exports = function(app) {
+  // api structure TBD
+  app.post("/api/saveRecipe", (req, res) => {
+    res.json({
+      recipeName: req.body.title,
+      queryAddress: req.body.
+    })
+  })
+
+}//closing bracket for recipe entry function
+
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
