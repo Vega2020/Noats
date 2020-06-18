@@ -1,3 +1,5 @@
+// This code creates the table; the object that gets exported out of here has the abilities to interact with that table. We're calling these abilities in the api-routes file (in this specific case, it can be used anywhere)
+
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 const bcrypt = require("bcryptjs");
 // Creating our User model
@@ -9,14 +11,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true
-      }
+        isEmail: true,
+      },
     },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
@@ -24,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
   };
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", user => {
+  User.addHook("beforeCreate", (user) => {
     user.password = bcrypt.hashSync(
       user.password,
       bcrypt.genSaltSync(10),

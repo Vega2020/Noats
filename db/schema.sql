@@ -1,0 +1,1 @@
+CREATE DATABASE noats_db;
