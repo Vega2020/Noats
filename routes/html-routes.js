@@ -1,3 +1,5 @@
+// Code for rendering our views (in handlebars or whatever you're using)
+
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
 
@@ -6,13 +8,26 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    // Send them to the index page.
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
+  app.get("/members", (req, res) => {
+    // If the user doesn't already has an account, send them to the signup page
+    if (!req.user) {
+      res.sendFile(path.join(__dirname, "../public/signup.html"));
+    } else {
+      res.sendFile(path.join(__dirname, "../public/members.html"));
+    }
+  });
+  app.get("/signup", (req, res) => {
+    // If the user doesn't already has an account, send them to the signup page
+    if (!req.user) {
+      res.sendFile(path.join(__dirname, "../public/signup.html"));
+    } else {
+      res.sendFile(path.join(__dirname, "../public/members.html"));
+    }
+  });
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {

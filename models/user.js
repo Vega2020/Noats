@@ -1,3 +1,5 @@
+// This code creates the table; the object that gets exported out of here has the abilities to interact with that table. We're calling these abilities in the api-routes file (in this specific case, it can be used anywhere)
+
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 const bcrypt = require("bcryptjs");
 // Creating our User model
