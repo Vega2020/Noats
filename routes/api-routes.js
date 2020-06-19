@@ -47,6 +47,14 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+  // app.post("/api/noats", function(req, res) {
+  //   db.Noats.create({
+  //     note: req.body.note,
+  //     RecipeId: req.body.RecipeId
+  //   }).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
