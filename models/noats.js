@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: 1
       }
-    }
+    },
+    //user ID should go here?
   });
 
   Noats.associate = function(models) {
