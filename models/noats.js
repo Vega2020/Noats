@@ -4,19 +4,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: 1,
-      },
-    },
-    recipeId: {
-      type: DataTypes.INTEGER,
-    },
+        len: 1
+      }
+    }
   });
 
   Noats.associate = function(models) {
     Noats.belongsTo(models.Recipe, {
       foreignKey: {
-        allowNull: false,
-      },
+        allowNull: false
+      }
     });
   };
 
