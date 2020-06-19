@@ -3,28 +3,12 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 // route for entering recipes to the Recipe table
-<<<<<<< HEAD
-//module.exports = function(app) {
-  //}; //closing bracket for recipe entry function
-  
-  module.exports = function(app) {
-    // Using the passport.authenticate middleware with our local strategy.
-    // If the user has valid login credentials, send them to the members page.
-    // Otherwise the user will be sent an error
-    // api structure TBD
-    app.post("/api/saveRecipe", (req, res) => {
-      res.json({
-        recipeName: req.body.title,
-        queryAddress: req.body.queryAddress
-      });
-    });
-=======
 module.exports = function(app) {
   // api structure TBD
   app.post("/api/saveRecipe", (req, res) => {
     res.json({
       recipeName: req.body.title,
-      queryAddress: req.body.queryAddress,
+      queryAddress: req.body.queryAddress
     });
   });
 }; //closing bracket for recipe entry function
@@ -33,12 +17,11 @@ module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
->>>>>>> a24c9f630967b5a468e5852cea67c2cbf5394c5c
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id,
+      id: req.user.id
     });
   });
 
@@ -48,12 +31,12 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
@@ -74,7 +57,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id,
+        id: req.user.id
       });
     }
   });
