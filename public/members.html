@@ -32,7 +32,7 @@
           <div class="one-half column">
             <h2 class="value-multiplier">SEARCH FOR A RECIPE</h2>
             <h5 class="value-heading">Lets Find Something To Eat</h5>
-            <input type="text" placeholder="Search.."> <button>Click Here</button>
+            <input type="text" placeholder="Search.." id="recipe-searchbar"> <button id="recipe-searchbutton">Click Here</button>
           </div>
           <div class="one-half column phones">
             <img class="phone" src="images/NOATS.png">
@@ -43,10 +43,8 @@
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="one-half column">
-            <h2 class="value-multiplier">SEARCH FOR A RECIPE</h2>
-            <h5 class="value-heading">Lets Find Something To Eat</h5>
-            <input class="one-half column" type="text" placeholder="Search.."><button>Click Here</button>
+          <div id="recipe-output" class="one-half column">
+            <!-- this div is empty for output to go in -->
           </div>
           <div class="one-half column">
             <h2 class="value-multiplier">My NOATS</h2>
@@ -59,6 +57,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/members.js"></script>
+    <script type="text/javascript" src="js/recipeCalls.js"></script>
   </body>
 
 </html>
