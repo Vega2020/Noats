@@ -7,18 +7,21 @@ $(document).ready(() => {
 });
 $("#saveNotes").on("click", function() {
   $.get("/api/user_data").then((data) => {
-    memberId = data.id;
+    var memberId = data.id;
     const noteText = $(".note-textarea")
       .val()
       .trim();
-      $.post("/api/noats", { //update this route
-        noteText: noteText,
+
+      //Get an if here to post if there's no note existing with this user/recipe combo, or modify if there is one.
+
+      $.post("/api/noats", {
+        note: noteText,
         memberId: memberId,
-        recipeId: 1 //fill Id here
+        RecipeId: 1 //fill Id here
       })
         .then(() => {
           console.log("Fill");
         })
-    console.log(memberId, noteText);
+    console.log(memberId, noteText, RecipeId);
   });
 });
