@@ -7,9 +7,6 @@ module.exports = function(sequelize, DataTypes) {
         len: 1,
       },
     },
-    recipeId: {
-      type: DataTypes.INTEGER,
-    },
   });
 
   Noats.associate = function(models) {

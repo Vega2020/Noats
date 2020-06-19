@@ -1,3 +1,13 @@
+$(document).ready(function() {
+
+  // put an event listener on the searchbutton that fires our getrecipe function and outputs the recipe
+  $("#recipe-searchbutton").on("click", function() {
+    console.log($("#recipe-searchbar").val());
+    getRecipe($("#recipe-searchbar").val());
+    $("#recipe-output")
+  });//closing bracket for searchbutton on click function
+
+}); //closing bracket for document.ready function
 
 // spoonacular recipe retrieve function:
 function getRecipe(tag) {
@@ -20,14 +30,14 @@ function getRecipe(tag) {
       recipeLink.text(response.results[random].title);
   
       // empty the #recipe div and append the new link to it
-      $("#recipe").append(recipeLink);
-      $("#recipe").append("<br>");
+      $("#recipe-output").append(recipeLink);
+      $("#recipe-output").append("<br>");
   
       var currentRecipe = response.results[random].id;
   
       var recipePicture = `https://spoonacular.com/recipeImages/${currentRecipe}-556x370.jpg`;
   
-      $("#recipe").append($("<img>").attr("src", recipePicture));
+      $("#recipe-output").append($("<img>").attr("src", recipePicture));
   
       // create a function to get the ingredients, with a second ajax call
       function getIngredients() {
@@ -57,12 +67,13 @@ function getRecipe(tag) {
                 `https://spoonacular.com/cdn/ingredients_100x100/${element.image}`
               )
             );
-            $("#recipe").append(li);
+            $("#recipe-output").append(li);
           });
         });
       } //closing bracket for getIngredients function
   
       //invoke getIngredients function as a step in the getRecipe function
       getIngredients();
+
     }); //closing bracket for getRecipe function's ajax call
   }; //closing bracket for spoonacular function
