@@ -3,8 +3,8 @@ $(document).ready(function() {
   // put an event listener on the searchbutton that fires our getrecipe function and outputs the recipe
   $("#recipe-searchbutton").on("click", function() {
     console.log($("#recipe-searchbar").val());
+    $("#recipe-output").empty();
     getRecipe($("#recipe-searchbar").val());
-    $("#recipe-output")
   });//closing bracket for searchbutton on click function
 
 }); //closing bracket for document.ready function
