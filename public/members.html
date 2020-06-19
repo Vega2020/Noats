@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
-  <link rel="shortcut icon" href="./assets/NOATS.png">
-</head>
-
-<body>
-  <nav class="u-full-width">
-    <a class="u-pull-left button button-primary" href="index.html">HOME</a>
-    <a class="u-pull-right button button-primary" href="signup.html">SIGN-UP</a>
-    <a class="u-pull-right button button-primary" href="members.html">MEMBERS</a>
-    <a class="u-pull-right button button-primary" href="#">LOG-OUT</a>
-  </nav>
-  <div class="row center">
-    <div class="col">
-        <img src="./assets/NOATS.png" alt="NOATS" class="center">
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>NOATS Members</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metasls -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONT -->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../dist/css/normalize.css">
+    <link rel="stylesheet" href="../../dist/css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <!-- Scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./images/NOATS.png">
+  </head>
+  <body>
+    <nav class="u-full-width">
+      <a class="u-pull-left button" href="index.html">HOME</a>
+      <a class="u-pull-right button" href="#">SIGN OUT</a>
+    </nav>
+    <div class="section hero">
+      <div class="container">
+        <div class="row"> 
+          <div class="one-half column">
+            <h2 class="value-multiplier">SEARCH FOR A RECIPE</h2>
+            <h5 class="value-heading">Lets Find Something To Eat</h5>
+            <input type="text" placeholder="Search.."> <button>Click Here</button>
+          </div>
+          <div class="one-half column phones">
+            <img class="phone" src="images/NOATS.png">
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
-
-</body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="one-half column">
+            <h2 class="value-multiplier">SEARCH FOR A RECIPE</h2>
+            <h5 class="value-heading">Lets Find Something To Eat</h5>
+            <input class="one-half column" type="text" placeholder="Search.."><button>Click Here</button>
+          </div>
+          <div class="one-half column">
+            <h2 class="value-multiplier">My NOATS</h2>
+            <h5 class="value-heading">Save, Share, Sizzle</h5>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
+  </body>
 
 </html>
