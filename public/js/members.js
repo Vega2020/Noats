@@ -11,6 +11,14 @@ $("#saveNotes").on("click", function() {
     const noteText = $(".note-textarea")
       .val()
       .trim();
+      $.post("/api/noats", { //update this route
+        noteText: noteText,
+        memberId: memberId,
+        recipeId: 1 //fill Id here
+      })
+        .then(() => {
+          console.log("Fill");
+        })
     console.log(memberId, noteText);
   });
 });
