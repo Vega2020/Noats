@@ -6,6 +6,9 @@ $(document).ready(function() {
   }); //closing bracket for searchbutton on click function
 }); //closing bracket for document.ready function
 
+// create an empty array for our function to push the query string to
+let queryString = [];
+
 // spoonacular recipe retrieve function:
 function getRecipe(tag) {
   var queryURL =
@@ -25,12 +28,22 @@ function getRecipe(tag) {
     // create a url link to the address in the returned object
     var recipeLink = $("<a>").attr("href", response.results[random].sourceUrl);
     recipeLink.text(response.results[random].title);
-
+    
     // empty the #recipe div and append the new link to it
     $("#recipe-output").append(recipeLink);
     $("#recipe-output").append("<br>");
+    
+    //get the recipe id from the random object
+    let currentRecipe = response.results[random].id;
+    console.log(currentRecipe);
 
-    var currentRecipe = response.results[random].id;
+    //save the query string with the id for our database
+    let buildQueryString = `https://api.spoonacular.com/recipes/search?id=${currentRecipe}`;
+    console.log(buildQueryString);
+    //push the queryString to the array we created at the global level.
+    queryString.push(buildQueryString);
+    console.log(queryString);
+
 
     var recipePicture = `https://spoonacular.com/recipeImages/${currentRecipe}-556x370.jpg`;
 
@@ -92,6 +105,7 @@ function getRecipe(tag) {
     //invoke getInstructions function as a step in the getRecipe function
     getInstructions();
     
-});
+});//closing bracket for getRecipe function's ajax calls
 
 };//closing bracket for getRecipe function
+
