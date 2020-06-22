@@ -38,8 +38,10 @@ function getRecipe(tag) {
     console.log(currentRecipe);
 
     //save the query string with the id for our database
-    let buildQueryString = `https://api.spoonacular.com/recipes/search?id=${currentRecipe}`;
+    let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=c30cd056ba1c4e459950da3b71b83d82`;
     console.log(buildQueryString);
+    //empty the global queryString array before adding the new string to it
+    queryString.length = 0;
     //push the queryString to the array we created at the global level.
     queryString.push(buildQueryString);
     console.log(queryString);
@@ -104,8 +106,24 @@ function getRecipe(tag) {
 
     //invoke getInstructions function as a step in the getRecipe function
     getInstructions();
+
+    //invoke our queryStringTest function. when we search a recipe this should return the same recipe as a json object in our console.
+    queryStringTest(queryString);
     
 });//closing bracket for getRecipe function's ajax calls
 
 };//closing bracket for getRecipe function
 
+//test function for query string
+function queryStringTest(testSearch) {
+  //set our queryURL to the queryString we're going to export (which is the variable we're running through this function)
+  let queryURL = testSearch;
+  
+  //this ajax call will return all the information for the recipe we pass through the function. We can write api routes and javascript to load this information from the database to our user's page.
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function(response) {
+    console.log(response);
+  });//closing bracket for queryStringTest ajax call
+};//closing bracket for queryStringTest function
