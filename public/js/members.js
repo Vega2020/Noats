@@ -7,6 +7,7 @@ $(document).ready(() => {
 });
 $("#saveNotes").on("click", function() {
   $.get("/api/user_data").then((data) => {
+    var recipeId = localStorage.getItem("recipeid");
     var memberId = data.id;
     const noteText = $(".note-textarea")
       .val()
@@ -22,6 +23,6 @@ $("#saveNotes").on("click", function() {
         .then(() => {
           console.log("Fill");
         })
-    console.log(memberId, noteText, RecipeId);
+    console.log(memberId, noteText, recipeId);
   });
 });
