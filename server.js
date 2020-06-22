@@ -1,6 +1,7 @@
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");
+const exhbs = require("express-handlebars");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 require("dotenv").config({ path: `${__dirname}/variable.env`});
@@ -20,6 +21,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.engine("handlebars", exhbs({defaultLayout: "main"}))
+app.set("view engine", "handlebars");
 
 // Requiring our routes
 require("./routes/html-routes.js")(app);

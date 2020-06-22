@@ -17,7 +17,7 @@ function getRecipe(tag) {
   var queryURL =
     "https://api.spoonacular.com/recipes/search?query=" +
     tag +
-    `&number1&apiKey=${spoonacularApiKey}`;
+    "&number1&apiKey=36fa179b399a43889f85ce0b694a5291";
 
   //ajax call for recipe
   $.ajax({
