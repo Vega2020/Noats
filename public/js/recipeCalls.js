@@ -9,13 +9,15 @@ $(document).ready(function() {
 
 // create an empty array for our function to push the query string to
 let queryString = [];
+// set the spoonacular api key as a variable so we can switch it out if we use up our quota
+let spoonacularApiKey = "36fa179b399a43889f85ce0b694a5291";
 
 // spoonacular recipe retrieve function:
 function getRecipe(tag) {
   var queryURL =
     "https://api.spoonacular.com/recipes/search?query=" +
     tag +
-    "&number1&apiKey=36fa179b399a43889f85ce0b694a5291";
+    `&number1&apiKey=${spoonacularApiKey}`;
 
   //ajax call for recipe
   $.ajax({
@@ -39,7 +41,7 @@ function getRecipe(tag) {
     console.log(currentRecipe);
 
     //save the query string with the id for our database
-    let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=36fa179b399a43889f85ce0b694a5291`;
+    let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=${spoonacularApiKey}`;
     console.log(buildQueryString);
     //empty the global queryString array before adding the new string to it
     queryString.length = 0;
@@ -47,22 +49,24 @@ function getRecipe(tag) {
     queryString.push(buildQueryString);
     console.log(queryString);
 
-
+    // this variable is the address for the current recipe's picture
     var recipePicture = `https://spoonacular.com/recipeImages/${currentRecipe}-556x370.jpg`;
 
+    // set a variable for the current picture
     const $recipeImage = $("<img>").attr("src", recipePicture);
 
+    // set css styling for the variable above
     $recipeImage.css("height", "350");
     $recipeImage.css("width", "350");
     $recipeImage.css("border-radius", "100%");
 
-
+    // append the styled image to the output box
     $("#recipe-image-display").append($recipeImage);
 
     // create a function to get the ingredients, with a second ajax call
     function getIngredients() {
       //create a variable for our ingredientQuery url
-      var ingredientQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/ingredientWidget.json?apiKey=36fa179b399a43889f85ce0b694a5291`;
+      var ingredientQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/ingredientWidget.json?apiKey=${spoonacularApiKey}`;
 
       //second ajax function for ingredients:
       $.ajax({
@@ -93,7 +97,7 @@ function getRecipe(tag) {
 
     // add a third ajax call for detailed instructions
     function getInstructions() {
-      var instructionQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/analyzedInstructions?apiKey=36fa179b399a43889f85ce0b694a5291`;
+      var instructionQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/analyzedInstructions?apiKey=${spoonacularApiKey}`;
 
       $.ajax({
         url: instructionQuery,
