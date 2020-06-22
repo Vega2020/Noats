@@ -8,21 +8,40 @@ $(document).ready(() => {
 $("#saveNotes").on("click", function() {
   $.get("/api/user_data").then((data) => {
     var recipeId = localStorage.getItem("recipeid");
+    var recipeName = localStorage.getItem("recipename");
     var memberId = data.id;
     const noteText = $(".note-textarea")
       .val()
       .trim();
 
       //Get an if here to post if there's no note existing with this user/recipe combo, or modify if there is one.
-
-      $.post("/api/noats", {
-        note: noteText,
-        memberId: memberId,
-        RecipeId: 1 //fill Id here
+      $.post("/api/recipe", {
+        recipeName: recipeName,
+        queryAddress: recipeId
       })
         .then(() => {
-          console.log("Fill");
+          console.log("Recipe Added!");
+          $.post("/api/noats", {
+            note: noteText,
+            belongsTo: recipeId,
+          })
+            .then(() => {
+              console.log("Note Added!");
+            })
         })
-    console.log(memberId, noteText, recipeId);
   });
+});
+
+$("#saveRecipe").on("click", function() {
+$.get("/api/user_data").then((data) => {
+  var recipeId = localStorage.getItem("recipeid");
+  var recipeName = localStorage.getItem("recipename");
+  console.log(recipeId, recipeName);
+  $.post("/api/recipe", {
+    recipeName: recipeName,
+    RecipeId: recipeId,
+    queryAddress: recipeId
+  })
+    .then(() => { console.log("Recipe Added!");});
+});
 });

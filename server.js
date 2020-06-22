@@ -1,10 +1,12 @@
 // Requiring necessary npm packages
+require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const exhbs = require("express-handlebars");
 // Requiring passport as we've configured it
+
 const passport = require("./config/passport");
-require("dotenv").config({ path: `${__dirname}/variable.env`});
+// Requiring passport as we've configured it
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;

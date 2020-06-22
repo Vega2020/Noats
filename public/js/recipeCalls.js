@@ -38,8 +38,9 @@ function getRecipe(tag) {
     
     //get the recipe id from the random object
     let currentRecipe = response.results[random].id;
-    console.log(currentRecipe);
+    let recipeName = response.results[random].title;
     localStorage.setItem("recipeid", currentRecipe);
+    localStorage.setItem("recipename", recipeName);
     //save the query string with the id for our database
     let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=${spoonacularApiKey}`;
     console.log(buildQueryString);

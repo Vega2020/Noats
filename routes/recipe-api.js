@@ -40,6 +40,7 @@ module.exports = function(app) {
 
   // POST route for saving a new recipe name and address
   app.post("/api/recipe", function(req, res) {
+    //if () - Fill this in to avoid dupes
     db.Recipe.create({
       recipeName: req.body.recipeName,
       queryAddress: req.body.queryAddress,

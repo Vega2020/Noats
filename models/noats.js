@@ -6,14 +6,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1],
       },
-    },
+    }
   });
 
   Noats.associate = function(models) {
     Noats.belongsTo(models.Recipe, {
-      foreignKey: {
-        allowNull: false,
-      },
+      foreignKey: "queryAddress",
+        targetKey: "queryAddress"
     });
   };
 
