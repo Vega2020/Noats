@@ -1,7 +1,8 @@
 $(document).ready(function() {
   // put an event listener on the searchbutton that fires our getrecipe function and outputs the recipe
   $("#recipe-searchbutton").on("click", function() {
-    $("#recipe-output").empty();
+    $("#recipe-image-display").empty();
+    $("#recipe-text-display").empty();
     getRecipe($("#recipe-searchbar").val());
   }); //closing bracket for searchbutton on click function
 }); //closing bracket for document.ready function
@@ -30,8 +31,8 @@ function getRecipe(tag) {
     recipeLink.text(response.results[random].title);
     
     // empty the #recipe div and append the new link to it
-    $("#recipe-output").append(recipeLink);
-    $("#recipe-output").append("<br>");
+    $("#recipe-text-display").append(recipeLink);
+    $("#recipe-text-display").append("<br>");
     
     //get the recipe id from the random object
     let currentRecipe = response.results[random].id;
@@ -49,7 +50,14 @@ function getRecipe(tag) {
 
     var recipePicture = `https://spoonacular.com/recipeImages/${currentRecipe}-556x370.jpg`;
 
-    $("#recipe-output").append($("<img>").attr("src", recipePicture));
+    const $recipeImage = $("<img>").attr("src", recipePicture);
+
+    $recipeImage.css("height", "350");
+    $recipeImage.css("width", "350");
+    $recipeImage.css("border-radius", "100%");
+
+
+    $("#recipe-image-display").append($recipeImage);
 
     // create a function to get the ingredients, with a second ajax call
     function getIngredients() {
@@ -78,7 +86,7 @@ function getRecipe(tag) {
               `https://spoonacular.com/cdn/ingredients_100x100/${element.image}`
             )
           );
-          $("#recipe-output").append(li);
+          $("#recipe-text-display").append(li);
         });
       });
     } // closing bracket for getIngredients function
@@ -95,7 +103,7 @@ function getRecipe(tag) {
         for (let i = 0; i < response[0].steps.length; i++) {
           const element = response[0].steps[i].step;
           let li = $("<li>").append(element);
-          $("#recipe-output").append(li);
+          $("#recipe-text-display").append(li);
       }; //closing bracket for for loop
     }); //closing bracket for getInstructions ajax response
   
