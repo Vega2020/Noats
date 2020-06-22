@@ -39,7 +39,7 @@ function getRecipe(tag) {
     //get the recipe id from the random object
     let currentRecipe = response.results[random].id;
     console.log(currentRecipe);
-
+    localStorage.setItem("recipeid", currentRecipe);
     //save the query string with the id for our database
     let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=${spoonacularApiKey}`;
     console.log(buildQueryString);
@@ -59,7 +59,6 @@ function getRecipe(tag) {
     $recipeImage.css("height", "350");
     $recipeImage.css("width", "350");
     $recipeImage.css("border-radius", "100%");
-
     // append the styled image to the output box
     $("#recipe-image-display").append($recipeImage);
 
