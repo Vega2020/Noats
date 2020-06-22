@@ -7,7 +7,7 @@ module.exports = function(app) {
       query.RecipeId = req.query.note;
     }
 
-    db.Recipe.findAll({
+    db.Noats.findAll({
       where: query,
       include: [db.Recipe],
     }).then(function(result) {
@@ -37,7 +37,7 @@ module.exports = function(app) {
   app.post("/api/noats", function(req, res) {
     db.Noats.create({
       note: req.body.note,
-      RecipeId: req.body.RecipeId
+      RecipeId: req.body.RecipeId,
     }).then(function(result) {
       res.json(result);
     });
