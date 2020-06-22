@@ -15,7 +15,7 @@ function getRecipe(tag) {
   var queryURL =
     "https://api.spoonacular.com/recipes/search?query=" +
     tag +
-    "&number1&apiKey=c30cd056ba1c4e459950da3b71b83d82";
+    "&number1&apiKey=36fa179b399a43889f85ce0b694a5291";
 
   //ajax call for recipe
   $.ajax({
@@ -39,7 +39,7 @@ function getRecipe(tag) {
     console.log(currentRecipe);
 
     //save the query string with the id for our database
-    let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=c30cd056ba1c4e459950da3b71b83d82`;
+    let buildQueryString = `https://api.spoonacular.com/recipes/informationBulk?ids=${currentRecipe}&apiKey=36fa179b399a43889f85ce0b694a5291`;
     console.log(buildQueryString);
     //empty the global queryString array before adding the new string to it
     queryString.length = 0;
@@ -62,7 +62,7 @@ function getRecipe(tag) {
     // create a function to get the ingredients, with a second ajax call
     function getIngredients() {
       //create a variable for our ingredientQuery url
-      var ingredientQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/ingredientWidget.json?apiKey=c30cd056ba1c4e459950da3b71b83d82`;
+      var ingredientQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/ingredientWidget.json?apiKey=36fa179b399a43889f85ce0b694a5291`;
 
       //second ajax function for ingredients:
       $.ajax({
@@ -93,7 +93,7 @@ function getRecipe(tag) {
 
     // add a third ajax call for detailed instructions
     function getInstructions() {
-      var instructionQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/analyzedInstructions?apiKey=c30cd056ba1c4e459950da3b71b83d82`;
+      var instructionQuery = `https://api.spoonacular.com/recipes/${currentRecipe}/analyzedInstructions?apiKey=36fa179b399a43889f85ce0b694a5291`;
 
       $.ajax({
         url: instructionQuery,
