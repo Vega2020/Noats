@@ -37,6 +37,7 @@ module.exports = function(app) {
   app.post("/api/noats", function(req, res) {
     db.Noats.create({
       note: req.body.note,
+      RecipeId: req.body.RecipeId
     }).then(function(result) {
       res.json(result);
     });
