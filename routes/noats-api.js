@@ -7,7 +7,7 @@ module.exports = function(app) {
       query.RecipeId = req.query.note;
     }
 
-    db.Recipe.findAll({
+    db.Noats.findAll({
       where: query,
       include: [db.Recipe],
     }).then(function(result) {

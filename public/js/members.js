@@ -11,17 +11,31 @@ $("#saveNotes").on("click", function() {
     const noteText = $(".note-textarea")
       .val()
       .trim();
+      $.get("/api/noats").then(data => {
+        console.log(data);
+      });
 
-      //Get an if here to post if there's no note existing with this user/recipe combo, or modify if there is one.
+      // if (noats_db.noats.count({where: {RecipeId: 1} })
+      // .then(count =>{
+      //   if (count!= 0){
+      //     return false;
+      //   }
+      //   return true;
+      //   })){
+      //     console.log("thing")
+      //   }
+      //   else{
+          
+      //           $.post("/api/noats", {
+      //             note: noteText,
+      //             memberId: memberId,
+      //             RecipeId: 1 //fill Id here
+      //           })
+      //             .then(() => {
+      //               console.log("Fill");
+      //             })
+      //         console.log(memberId, noteText, RecipeId);
 
-      $.post("/api/noats", {
-        note: noteText,
-        memberId: memberId,
-        RecipeId: 1 //fill Id here
-      })
-        .then(() => {
-          console.log("Fill");
-        })
-    console.log(memberId, noteText, RecipeId);
+      //   }
   });
 });
