@@ -18,9 +18,9 @@ module.exports = function(app) {
   //     });
   //   });
 
-  app.get("/api/noats", function(req, res) {
-    db.Noats.findAll({
-      include: [db.Recipes],
+  app.get("/api/recipe", function(req, res) {
+    db.Recipe.findAll({
+      include: [db.Noats],
     }).then(function(dbNoats) {
       res.json(dbNoats);
     });

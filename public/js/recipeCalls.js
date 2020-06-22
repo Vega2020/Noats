@@ -9,6 +9,8 @@ $(document).ready(function() {
 
 // create an empty array for our function to push the query string to
 let queryString = [];
+// set the spoonacular api key as a variable so we can switch it out if we use up our quota
+let spoonacularApiKey = "36fa179b399a43889f85ce0b694a5291";
 
 // spoonacular recipe retrieve function:
 function getRecipe(tag) {
@@ -47,16 +49,18 @@ function getRecipe(tag) {
     queryString.push(buildQueryString);
     console.log(queryString);
 
-
+    // this variable is the address for the current recipe's picture
     var recipePicture = `https://spoonacular.com/recipeImages/${currentRecipe}-556x370.jpg`;
 
+    // set a variable for the current picture
     const $recipeImage = $("<img>").attr("src", recipePicture);
 
+    // set css styling for the variable above
     $recipeImage.css("height", "350");
     $recipeImage.css("width", "350");
     $recipeImage.css("border-radius", "100%");
 
-
+    // append the styled image to the output box
     $("#recipe-image-display").append($recipeImage);
 
     // create a function to get the ingredients, with a second ajax call
