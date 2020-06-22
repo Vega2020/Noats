@@ -9,13 +9,16 @@ module.exports = function(sequelize, DataTypes) {
     // The password cannot be null (queryAddress variable replaced "password")
     queryAddress: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false
     }
   });
 
   Recipe.associate = function(models) {
     Recipe.hasMany(models.Noats, {
-      onDelete: "cascade"
+      onDelete: "cascade",
+      foreignKey: "belongsTo",
+      sourceKey: "queryAddress"
     });
   };
   // return the finished entry for sequelize

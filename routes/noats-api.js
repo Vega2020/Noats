@@ -38,6 +38,7 @@ module.exports = function(app) {
     db.Noats.create({
       note: req.body.note,
       RecipeId: req.body.RecipeId,
+      belongsTo: req.body.belongsTo,
     }).then(function(result) {
       res.json(result);
     });

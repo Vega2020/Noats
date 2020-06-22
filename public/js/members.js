@@ -23,7 +23,7 @@ $("#saveNotes").on("click", function() {
           console.log("Recipe Added!");
           $.post("/api/noats", {
             note: noteText,
-            RecipeId: recipeId
+            belongsTo: recipeId,
           })
             .then(() => {
               console.log("Note Added!");
@@ -36,8 +36,10 @@ $("#saveRecipe").on("click", function() {
 $.get("/api/user_data").then((data) => {
   var recipeId = localStorage.getItem("recipeid");
   var recipeName = localStorage.getItem("recipename");
+  console.log(recipeId, recipeName);
   $.post("/api/recipe", {
     recipeName: recipeName,
+    RecipeId: recipeId,
     queryAddress: recipeId
   })
     .then(() => { console.log("Recipe Added!");});
