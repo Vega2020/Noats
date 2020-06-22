@@ -41,6 +41,22 @@
   display: none;
 }
 
+.logo {
+  max-width: 80%;
+  margin: 3rem auto -12rem;
+  padding-left: 45px;
+}
+.myNoats {
+  padding-top: 50px;
+}
+
+.recipeColumn {
+  padding-top: 70px;
+}
+.noatsLOGO {
+  padding-bottom: 70px;
+  /* padding-top: 50px; */
+}
 /* Values
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .values {
@@ -105,13 +121,14 @@
   }
   .hero {
     padding-bottom: 12rem;
-    text-align: left;
+    text-align: center;
     height: 165px;
   }
   .phone {
     position: absolute;
     top: -7rem;
     right: 3rem;
+    left: 3rem;
     max-height: 362px;
     z-index: 3;
   }
