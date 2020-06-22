@@ -59,7 +59,6 @@ function getRecipe(tag) {
     $recipeImage.css("height", "350");
     $recipeImage.css("width", "350");
     $recipeImage.css("border-radius", "100%");
-
     // append the styled image to the output box
     $("#recipe-image-display").append($recipeImage);
 
