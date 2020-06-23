@@ -1,5 +1,3 @@
-const db = require("../models");
-
 
 $(document).ready(() => {
   // This file just does a GET request to figure out which user is logged in
@@ -52,8 +50,9 @@ $.get("/api/user_data").then((data) => {
 // get saved recipes function, currently not working
 function getSavedRecipes () {
   $.get("/api/recipe", function(req, res) {
-    let recipeList = db.Recipe.findAll();
-    console.log(recipeList);
+    let recipeList = res;
+    console.log(res);
+    
   });
 }; //closing bracket for getSavedRecipes function
 
